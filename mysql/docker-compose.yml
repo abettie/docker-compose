@@ -1,0 +1,19 @@
+services:
+  mysql:
+    build: 
+      context: .
+      dockerfile: ./mysql/Dockerfile
+    container_name: mysqltest
+    restart: always
+    volumes: 
+      - mysqlvolume:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=testdb
+      - MYSQL_USER=mysql
+      - MYSQL_PASSWORD=mysql
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - 3306:3306
+
+volumes:
+  mysqlvolume:
